@@ -11,9 +11,9 @@ export const bot = new Telegraf(token)
 localDB.set('currentToken', 'default')
 
 bot
-    .use(clone)
-    .use(openai)
+    // .use(clone)
     .use(start)
+    .use(openai)
 
 bot.launch({
     webhook: {
