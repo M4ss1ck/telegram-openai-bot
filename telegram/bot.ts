@@ -1,6 +1,7 @@
 import { Telegraf } from 'telegraf'
 import start from './middleware/start'
 import clone from './middleware/clone'
+import openai from './middleware/openai'
 import { localDB } from '../db/local'
 import { logger } from '../utils/logger'
 import { token, domain } from '../config/constants'
@@ -11,6 +12,7 @@ localDB.set('currentToken', 'default')
 
 bot
     .use(clone)
+    .use(openai)
     .use(start)
 
 bot.launch({
