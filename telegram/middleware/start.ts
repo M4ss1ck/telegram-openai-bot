@@ -10,11 +10,11 @@ const start = new Composer()
 start.start(async ctx => {
     if (ctx.chat.type === 'private') {
         const url = `https://${domain}/`
-        await ctx.replyWithHTML('This is a bot to manage other bots.\n\nUsing <code>/clone</code> command, you can make your own copy with the middleware you want. Try it out', Markup.inlineKeyboard([
+        await ctx.replyWithHTML('This bot uses OpenAI to unveil the unknown (or something like that)', Markup.inlineKeyboard([
             Markup.button.webApp('WebApp', url)
         ])).catch((e) => logger.error(e))
     } else {
-        await ctx.replyWithHTML('This is a bot to manage other bots.\n\nUsing <code>/clone</code> command, you can make your own copy with the middleware you want. Try it out').catch((e) => logger.error(e))
+        await ctx.replyWithHTML('This bot uses OpenAI to unveil the unknown (or something like that)').catch((e) => logger.error(e))
     }
 })
 
