@@ -1,8 +1,8 @@
-# Bot manager
+# Smart Bot
 
-> "One bot to rule them all"
+> "One bot to know it all"
 
-Telegraf bot template with WebApp support and a `/clone` command to allow users to have their own copy.
+Telegraf bot that uses OpenAI to unveil the unknown (or something like that).
 
 ## Stack
 
