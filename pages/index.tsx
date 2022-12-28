@@ -73,8 +73,8 @@ export default function Home({ params }: { params: any }) {
   return (
     <div className="bg-telegram-bg">
       <Head>
-        <title>Bot Manager</title>
-        <meta name="description" content="Telegram bot with NextJS app" />
+        <title>Smart Bot</title>
+        <meta name="description" content="Telegram bot with AI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -84,8 +84,11 @@ export default function Home({ params }: { params: any }) {
         </div>}
         {state.loginStatus === 1 && <div>
           <Greetings />
+          <p className="text-lg font-bold text-telegram-text">
+            This bot is similar to ChatGPT, just talk with it.
+          </p>
         </div>}
-        <footer className="text-lg font-bold text-telegram-text absolute bottom-1">
+        <footer className="absolute text-lg font-bold text-telegram-text bottom-1">
           Template WebApp bootstrapped using NextJS, Tailwind CSS and Telegraf.
         </footer>
       </main>
