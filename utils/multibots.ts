@@ -4,6 +4,7 @@ import { logger } from "./logger";
 import { prisma } from "../db/prisma";
 import { localDB } from "../db/local";
 import start from '../telegram/middleware/start'
+import openai from "../telegram/middleware/openai";
 // import fetch from 'node-fetch'
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN!;
@@ -28,6 +29,7 @@ export const createBot = async (token: string) => {
         logger.info('starting new bot')
         const bot = new Telegraf(token)
         bot
+            .use(openai)
             .use(start)
 
         bot.launch({
