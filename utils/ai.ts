@@ -22,3 +22,18 @@ export const aiAnswer = async (prompt: string) => {
         return 'Error with completion!'
     }
 }
+
+export const imgGen = async (prompt: string) => {
+    try {
+        const response = await openai.createImage({
+            prompt,
+            n: 1,
+            size: '1024x1024'
+        })
+        return response.data.data[0].url ?? 'Error in url'
+    } catch (error) {
+        logger.error('imgGen error')
+        logger.error(error)
+        return 'Error with image generation!'
+    }
+}
