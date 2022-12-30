@@ -1,7 +1,7 @@
 import { Composer, Markup } from 'telegraf'
 import { message, editedMessage, channelPost, editedChannelPost, callbackQuery } from "telegraf/filters";
 import { logger } from '../../utils/logger'
-import { aiAnswer } from '../../utils/ai'
+import { aiAnswer, imgGen } from '../../utils/ai'
 
 const openai = new Composer()
 
@@ -12,6 +12,24 @@ openai.command('ask', async ctx => {
             const response = await aiAnswer(prompt)
             if (response) {
                 ctx.sendMessage(response)
+            } else {
+                ctx.sendMessage('Unknown error! Try again.')
+            }
+        } else {
+            ctx.sendMessage('Question was too short or empty.')
+        }
+    } catch (error) {
+        logger.error(error)
+    }
+})
+
+openai.command('img', async ctx => {
+    try {
+        const prompt = ctx.message.text.replace(/^\/img(@\w+)?\s+/, '')
+        if (prompt.length > 5) {
+            const response = await imgGen(prompt)
+            if (response && !response.startsWith('Error')) {
+                ctx.sendPhoto(response, { caption: prompt })
             } else {
                 ctx.sendMessage('Unknown error! Try again.')
             }
